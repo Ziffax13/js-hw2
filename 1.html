@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Простой тест и обработка ввода</title>
+</head>
+<body>
+
+<script>
+  const questions = [
+    "Вопрос 1?",
+    "Вопрос 1?",
+    "Вопрос 1?",
+  ];
+
+  const correctAnswers = [true, false, true];
+
+  const answers = [];
+
+  for (let i = 0; i < questions.length; i++) {
+    let response = prompt(questions[i]);
+    if (response.toLowerCase() === 'да') {
+      answers.push(true); 
+    } else {
+      answers.push(false);
+    }
+  }
+
+  let correctCount = 0;
+  for (let i = 0; i < correctAnswers.length; i++) {
+    if (answers[i] === correctAnswers[i]) {
+      correctCount++;
+    }
+  }
+
+  alert(`Вы ответили правильно на ${correctCount} из ${questions.length} вопросов.`);
+</script>
+
+<script>
+  //
+  const forbiddenChars = /[^A-Za-zа-яА-ЯёЁ]/;
+  let userName = prompt("Введите ФИО:");
+  while (forbiddenChars.test(userName)) {
+    alert("Недопустимые символы! Пожалуйста, введите ФИО заново.");
+    userName = prompt("Введите ФИО:");
+  }
+</script>
+
+<script>
+
+  let url = "http://www.ufa.com.ua/utilites/hdd/out.php?sort=2";
+  let dividedUrl = url.match(/(https?:\/\/[^\/]+)\/([^\/]+)\/([^\/?]+)\??(.+)/);
+
+  if (dividedUrl) {
+    let [, protocol, host, path, queryString] = dividedUrl;
+    alert(`Протокол: ${protocol}\nХост: ${host}\nПуть и имя файла: ${path}\nСтрока запроса: ${queryString}`);
+  } else {
+    alert("Некорректный адрес");
+  }
+</script>
+
+</body>
+</html>
